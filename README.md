@@ -46,6 +46,7 @@
 2. Set up project in `package.json`.
 3. Set up semantic release in `.releaserc.js`.
 4. Set up Travis CI as needed in `.travis.yml`.
+5. Update readme as desired.
 
 ## Directory Structure
 
