@@ -1,0 +1,47 @@
+{
+	"name": "@brikcss/starter-module",
+	"version": "0.0.0-development",
+	"description": "Useful git hooks to make developers' lives easier.",
+	"author": "BrikCSS <https://github.com/brikcss>",
+	"contributors": [
+		"The Zimmee <thezimmee@gmail.com>"
+	],
+	"homepage": "https://github.com/brikcss/starter-module",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/brikcss/starter-module.git"
+	},
+	"bugs": {
+		"url": "https://github.com/brikcss/starter-module/issues"
+	},
+	"bin": {},
+	"main": "",
+	"module": "",
+	"browser": "",
+	"directories": {
+		"bin": "./bin",
+		"lib": "",
+		"doc": ""
+	},
+	"files": [],
+	"publishConfig": {
+		"tag": "dev",
+		"access": "public"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "node ./node_modules/.bin/pre-commit-lint",
+			"commit-msg": "commitlint -e $GIT_PARAMS && . ./node_modules/.bin/commit-msg-stamp-branch ${GIT_PARAMS}",
+			"pre-push": ". ./node_modules/.bin/pre-push-check-stage && echo \"\n[ok] Pushing code...\""
+		}
+	},
+	"scripts": {
+		"test": "eslint ./bin/**/*.js",
+		"semantic-release": "semantic-release"
+	},
+	"devDependencies": {
+		"@brikcss/git-hooks": "dev",
+		"@commitlint/cli": "6.x",
+		"semantic-release": "15.x"
+	}
+}
