@@ -1,8 +1,7 @@
 ### ------------------------------------------------------------------------------------------------
-##  .editorconfig
-##  -------------
+##  @filename  .editorconfig
 ##  @author  brikcss  <https://github.com/brikcss>
-##  @description  Text editor config with [EditorConfig](http://editorconfig.org).
+##  @description  http://editorconfig.org
 ### ------------------------------------------------------------------------------------------------
 
 root = true

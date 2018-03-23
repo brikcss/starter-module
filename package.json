@@ -36,11 +36,11 @@
 		}
 	},
 	"scripts": {
-		"test": "eslint ./bin/**/*.js",
+		"test": "node ./node_modules/.bin/eslint ./bin/**/*.js",
 		"semantic-release": "semantic-release"
 	},
 	"devDependencies": {
-		"@brikcss/git-hooks": "dev",
+		"@brikcss/git-hooks": "1.x",
 		"@commitlint/cli": "6.x",
 		"semantic-release": "15.x"
 	}
