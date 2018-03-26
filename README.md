@@ -52,16 +52,17 @@
 	```
 
 2. Set up project in `package.json`.
-3. Set up semantic release (assets to publish) in `.releaserc.js`.
-4. Update readme:
+3. Update readme:
 	- Add package install/usage instructions.
 	- Add/update badges. **Make sure to update the Codacy badge with the correct repo ID.**
-5. Publish manually if version is >1.0.0. When ready for v1, set up Travis CI / `.travis.yml`:
+4. Publish manually while version is >1.0.0.
+5. When ready for v1.0.0, set up semantic release with CI:
+	- Modify `.travis.yml` to project's needs.
+	- Add env variables: `NODE_ENV=test` `NPM_TOKEN`, `GH_TOKEN`, `CODACY_PROJECT_TOKEN`, `COVERALLS_REPO_TOKEN`.
+	- Set up semantic release (assets to publish) in `.releaserc.js`.
 	- Set up [codacy](https://www.codacy.com/).
 	- Set up [coveralls](https://coveralls.io/).
 	- Set up [codeclimate](https://codeclimate.com/).
-	- Add env variables: `NPM_TOKEN`, `GH_TOKEN`, `CODACY_PROJECT_TOKEN`, `COVERALLS_REPO_TOKEN`.
-	- Make sure correct tasks / environments are set up.
 
 ## Directory Structure
 
@@ -78,6 +79,6 @@ root/
 
 ## Environment support
 
-| Node   | CLI   | UMD   | Browser   |
-|:-------|:-----:|:------|:----------|
-| ✔      | 𐄂     | 𐄂     | 𐄂         |
+| Node   | CLI   | UMD   | ES Module | Browser   |
+|:------:|:-----:|:-----:|:---------:|:---------:|
+| ✔      | x     | x     | x         | x         |
