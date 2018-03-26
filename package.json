@@ -36,12 +36,30 @@
 		}
 	},
 	"scripts": {
-		"test": "node ./node_modules/.bin/eslint ./bin/**/*.js",
+		"pretest": "npm run build",
+		"test": "concurrently --raw \"npm run test:lint\" \"npm run test:coverage\"",
+		"test:lint": "node ./node_modules/.bin/eslint ./{src,bin}/**/*.js",
+		"test:unit": "node ./node_modules/.bin/mocha \"./{test,src,bin}/**/*.spec.js\" --reporter=mocha-better-spec-reporter --colors",
+		"test:coverage": "nyc mocha \"./{test,src,bin}/**/*.spec.js\" --reporter=mocha-better-spec-reporter --colors",
+		"build": "rollup --config=.rolluprc.js",
 		"semantic-release": "semantic-release"
 	},
 	"devDependencies": {
 		"@brikcss/git-hooks": "1.x",
 		"@commitlint/cli": "6.x",
+		"babel-core": "6.x",
+		"babel-plugin-external-helpers": "6.x",
+		"babel-preset-env": "1.x",
+		"concurrently": "3.x",
+		"mocha": "5.x",
+		"mocha-better-spec-reporter": "3.x",
+		"nyc": "11.x",
+		"rollup": "0.x",
+		"rollup-plugin-babel": "3.x",
+		"rollup-plugin-commonjs": "9.x",
+		"rollup-plugin-node-resolve": "3.x",
+		"rollup-plugin-prettier": "0.x",
+		"rollup-plugin-uglify": "3.x",
 		"semantic-release": "15.x"
 	}
 }
