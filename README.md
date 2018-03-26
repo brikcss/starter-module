@@ -45,8 +45,12 @@
 
 2. Set up project in `package.json`.
 3. Set up semantic release in `.releaserc.js`.
-4. Set up Travis CI as needed in `.travis.yml`.
-5. Update readme as desired.
+4. Update readme as desired.
+5. Set up Travis CI as needed in `.travis.yml`.
+6. Add code quality/coverage.
+	- https://codeclimate.com/
+	- https://www.codacy.com/product
+	- https://coveralls.io/
 
 ## Directory Structure
 
