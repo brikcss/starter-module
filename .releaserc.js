@@ -10,24 +10,21 @@ const config = {
 	github: {
 		path: '@semantic-release/github',
 		assignees: ['thezimmee']
-		// assets: [
-		// 	{
-		// 		name: 'pre-commit-lint.js',
-		// 		path: './bin/pre-commit-lint.js',
-		// 		label: 'Runs eslint, stylelint, and prettier on staged files.'
-		// 	},
-		// 	{
-		// 		name: 'commit-msg-stamp-branch.sh',
-		// 		path: './bin/commit-msg-stamp-branch.sh',
-		// 		label:
-		// 			'Appends the source branch name to the commit message.'
-		// 	},
-		// 	{
-		// 		name: 'check-stage.sh',
-		// 		path: './bin/pre-push/check-stage.sh',
-		// 		label: 'Git pre-push hook which prevents pushing files with a dirty stage.'
-		// 	}
-		// ],
+		// assets: 'dist/**/*'
+		// assets: (() => {
+		// 	const assets = [];
+		// 	['lib', 'umd', 'browser', 'module'].forEach((type) => {
+		// 		assets.push({
+		// 			path: `dist/${type}/merge.js`,
+		// 			name: `${type}/merge.js`
+		// 		});
+		// 		assets.push({
+		// 			path: `dist/${type}/merge.min.js`,
+		// 			name: `${type}/merge.min.js`
+		// 		});
+		// 	});
+		// 	return assets;
+		// })()
 	},
 	// See https://github.com/semantic-release/npm.
 	npm: '@semantic-release/npm'

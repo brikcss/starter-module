@@ -16,6 +16,14 @@
 	<!-- <a href="https://github.com/brikcss/starter-module/tree/master">
 		<img alt="Travis branch" src="https://img.shields.io/travis/rust-lang/rust/master.svg?style=flat-square&label=master">
 	</a> -->
+	<!-- Codacy. -->
+	<a href="https://www.codacy.com/app/thezimmee/starter-module">
+		<img alt="NPM version" src="https://img.shields.io/codacy/grade/49af7ce4215c4720a6dbc90c3b7fcdbe/master.svg?style=flat-square">
+	</a>
+	<!-- Coveralls -->
+	<a href='https://coveralls.io/github/brikcss/starter-module?branch=master'>
+		<img src='https://img.shields.io/coveralls/github/brikcss/starter-module/master.svg?style=flat-square' alt='Coverage Status' />
+	</a>
 	<!-- Commitizen friendly. -->
 	<a href="http://commitizen.github.io/cz-cli/">
 		<img alt="Commitizen friendly" src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square">
@@ -44,13 +52,16 @@
 	```
 
 2. Set up project in `package.json`.
-3. Set up semantic release in `.releaserc.js`.
-4. Update readme as desired.
-5. Set up Travis CI as needed in `.travis.yml`.
-6. Add code quality/coverage.
-	- https://codeclimate.com/
-	- https://www.codacy.com/product
-	- https://coveralls.io/
+3. Set up semantic release (assets to publish) in `.releaserc.js`.
+4. Update readme:
+	- Add package install/usage instructions.
+	- Add/update badges. **Make sure to update the Codacy badge with the correct repo ID.**
+5. Set up Travis CI / `.travis.yml`:
+	- Set up [codacy](https://www.codacy.com/).
+	- Set up [coveralls](https://coveralls.io/).
+	- Set up [codeclimate](https://codeclimate.com/).
+	- Add env variables: `NPM_TOKEN`, `GH_TOKEN`, `CODACY_PROJECT_TOKEN`, `COVERALLS_REPO_TOKEN`.
+	- Make sure correct tasks / environments are set up.
 
 ## Directory Structure
 

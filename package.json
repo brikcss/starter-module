@@ -1,7 +1,6 @@
 {
 	"name": "@brikcss/starter-module",
 	"version": "0.0.0-development",
-	"description": "Useful git hooks to make developers' lives easier.",
 	"author": "BrikCSS <https://github.com/brikcss>",
 	"contributors": [
 		"The Zimmee <thezimmee@gmail.com>"
@@ -14,6 +13,10 @@
 	"bugs": {
 		"url": "https://github.com/brikcss/starter-module/issues"
 	},
+	"description": "Useful git hooks to make developers' lives easier.",
+	"keywords": [
+		"brikcss"
+	],
 	"bin": {},
 	"main": "",
 	"module": "",
@@ -37,23 +40,29 @@
 	},
 	"scripts": {
 		"pretest": "npm run build",
-		"test": "concurrently --raw \"npm run test:lint\" \"npm run test:coverage\"",
-		"test:lint": "node ./node_modules/.bin/eslint ./{src,bin}/**/*.js",
-		"test:unit": "node ./node_modules/.bin/mocha \"./{test,src,bin}/**/*.spec.js\" --reporter=mocha-better-spec-reporter --colors",
-		"test:coverage": "nyc mocha \"./{test,src,bin}/**/*.spec.js\" --reporter=mocha-better-spec-reporter --colors",
+		"test": "concurrently \"npm run test:lint\" \"npm run test:coverage\"",
+		"test:lint": "node ./node_modules/.bin/eslint ./src/merge.js && echo \"\n[ok] Linter complete.\n\"",
+		"test:unit": "node ./node_modules/.bin/mocha \"./test/*.spec.js\" --reporter=mocha-better-spec-reporter --colors",
+		"test:coverage": "nyc --reporter=lcov --reporter=text mocha \"./test/*.spec.js\" --recursive && concurrently \"cat coverage/lcov.info | codacy-coverage\" \"cat coverage/lcov.info | coveralls\"",
+		"prebuild": "rimraf dist",
 		"build": "rollup --config=.rolluprc.js",
+		"watch": "concurrently \"npm run build -- --watch\" \"watch src/merge.js --exec='npm run test:unit'\"",
 		"semantic-release": "semantic-release"
 	},
 	"devDependencies": {
 		"@brikcss/git-hooks": "1.x",
+		"@brikcss/watcher-cli": "0.x",
 		"@commitlint/cli": "6.x",
 		"babel-core": "6.x",
 		"babel-plugin-external-helpers": "6.x",
 		"babel-preset-env": "1.x",
+		"codacy-coverage": "2.x",
 		"concurrently": "3.x",
+		"coveralls": "3.x",
 		"mocha": "5.x",
 		"mocha-better-spec-reporter": "3.x",
 		"nyc": "11.x",
+		"rimraf": "2.x",
 		"rollup": "0.x",
 		"rollup-plugin-babel": "3.x",
 		"rollup-plugin-commonjs": "9.x",
