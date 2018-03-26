@@ -56,7 +56,7 @@
 4. Update readme:
 	- Add package install/usage instructions.
 	- Add/update badges. **Make sure to update the Codacy badge with the correct repo ID.**
-5. Set up Travis CI / `.travis.yml`:
+5. Publish manually if version is >1.0.0. When ready for v1, set up Travis CI / `.travis.yml`:
 	- Set up [codacy](https://www.codacy.com/).
 	- Set up [coveralls](https://coveralls.io/).
 	- Set up [codeclimate](https://codeclimate.com/).
