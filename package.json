@@ -1,7 +1,8 @@
 {
 	"name": "@brikcss/starter-module",
-	"version": "0.0.0-development",
-	"author": "BrikCSS <https://github.com/brikcss>",
+	"version": "0.0.1",
+	"description": "Starter repo for building node, CLI, JS, or browser modules.",
+	"author": "Brikcss <https://github.com/brikcss>",
 	"contributors": [
 		"The Zimmee <thezimmee@gmail.com>"
 	],
@@ -13,20 +14,20 @@
 	"bugs": {
 		"url": "https://github.com/brikcss/starter-module/issues"
 	},
-	"description": "Useful git hooks to make developers' lives easier.",
 	"keywords": [
 		"brikcss"
 	],
 	"bin": {},
-	"main": "",
-	"module": "",
-	"browser": "",
+	"main": "./dist/lib/lib.js",
+	"module": "./dist/module/lib.js",
+	"browser": "./dist/browser/lib.js",
+	"umd": "./dist/umd/lib.js",
 	"directories": {
 		"bin": "./bin",
-		"lib": "",
-		"doc": ""
+		"lib": "./dist/lib",
+		"doc": "./docs"
 	},
-	"files": [],
+	"files": ["./dist"],
 	"publishConfig": {
 		"tag": "dev",
 		"access": "public"
@@ -39,14 +40,16 @@
 		}
 	},
 	"scripts": {
+		"preci": "npm run build",
+		"ci": "concurrently \"npm run test:lint\" \"npm run test:coverage\"",
 		"pretest": "npm run build",
-		"test": "concurrently \"npm run test:lint\" \"npm run test:coverage\"",
-		"test:lint": "node ./node_modules/.bin/eslint ./src/merge.js && echo \"\n[ok] Linter complete.\n\"",
+		"test": "concurrently \"npm run test:lint\" \"npm run test:unit\"",
+		"test:lint": "node ./node_modules/.bin/eslint ./src/*.js && echo \"\n[ok] Linter complete.\n\"",
 		"test:unit": "node ./node_modules/.bin/mocha \"./test/*.spec.js\" --reporter=mocha-better-spec-reporter --colors",
 		"test:coverage": "nyc --reporter=lcov --reporter=text mocha \"./test/*.spec.js\" --recursive && concurrently \"cat coverage/lcov.info | codacy-coverage\" \"cat coverage/lcov.info | coveralls\"",
 		"prebuild": "rimraf dist",
 		"build": "rollup --config=.rolluprc.js",
-		"watch": "concurrently \"npm run build -- --watch\" \"watch src/merge.js --exec='npm run test:unit'\"",
+		"watch": "concurrently \"npm run build -- --watch\" \"watch src/*.js test/*.spec.js --exec='npm run test:unit'\"",
 		"semantic-release": "semantic-release"
 	},
 	"devDependencies": {

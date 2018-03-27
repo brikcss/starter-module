@@ -15,12 +15,12 @@ const config = {
 		// 	const assets = [];
 		// 	['lib', 'umd', 'browser', 'module'].forEach((type) => {
 		// 		assets.push({
-		// 			path: `dist/${type}/merge.js`,
-		// 			name: `${type}/merge.js`
+		// 			path: `dist/${type}/lib.js`,
+		// 			name: `lib-${type}.js`
 		// 		});
 		// 		assets.push({
-		// 			path: `dist/${type}/merge.min.js`,
-		// 			name: `${type}/merge.min.js`
+		// 			path: `dist/${type}/lib.min.js`,
+		// 			name: `lib-${type}.min.js`
 		// 		});
 		// 	});
 		// 	return assets;

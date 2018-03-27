@@ -18,9 +18,16 @@ import pkg from './package.json';
 // Flags.
 const isProd = process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'test';
 
+// Config.
+const lib = 'libName';
+
+// -----------------------
+// Build config variatons.
+//
+
 // Set base options.
 const base = {
-	input: 'src/merge.js',
+	input: `src/${lib}.js`,
 	watch: {
 		chokidar: true,
 		include: 'src/**',
@@ -29,9 +36,6 @@ const base = {
 	}
 };
 
-// -----------------------
-// Build config variatons.
-//
 // Build configs to be merged (later) with base.
 let configs = [
 	{
@@ -60,13 +64,13 @@ let configs = [
 		output: [
 			// Browser global / IIFE.
 			{
-				name: 'brikcss.merge',
+				name: `brikcss.${lib}`,
 				file: pkg.browser,
 				format: 'iife'
 			},
 			// Browser friendly UMD.
 			{
-				name: 'brikcss.merge',
+				name: `brikcss.${lib}`,
 				file: pkg.umd,
 				format: 'umd'
 			}

@@ -42,6 +42,12 @@
 	</a> -->
 </p>
 
+## Environment support
+
+| Node   | CLI   | UMD   | ES Module | Browser   |
+|:------:|:-----:|:-----:|:---------:|:---------:|
+| ✔      | x     | x     | x         | x         |
+
 ## Install
 
 1. Clone the repo and remove git tracking:
@@ -51,18 +57,39 @@
 	rm -rf <destination>/.git
 	```
 
-2. Set up project in `package.json`.
-3. Update readme:
-	- Add package install/usage instructions.
-	- Add/update badges. **Make sure to update the Codacy badge with the correct repo ID.**
-4. Publish manually while version is >1.0.0.
-5. When ready for v1.0.0, set up semantic release with CI:
-	- Modify `.travis.yml` to project's needs.
-	- Add env variables: `NODE_ENV=test` `NPM_TOKEN`, `GH_TOKEN`, `CODACY_PROJECT_TOKEN`, `COVERALLS_REPO_TOKEN`.
-	- Set up semantic release (assets to publish) in `.releaserc.js`.
-	- Set up [codacy](https://www.codacy.com/).
-	- Set up [coveralls](https://coveralls.io/).
-	- Set up [codeclimate](https://codeclimate.com/).
+2. Set up initial project config:
+	- `package.json`
+	- `.rolluprc.js`
+	- `.releaserc.js` (github assets)
+	- `.travis.yml`
+
+3. When code is ready, set up CI and commit code:
+
+	- Create github repo and set up:
+		- [codacy](https://www.codacy.com/)
+		- [coveralls](https://coveralls.io/)
+		- [codeclimate](https://codeclimate.com/)
+	- Update readme shields and install/usage instructions. **Make sure to update the Codacy badge with the correct repo ID.**
+	- Commit code.
+	- Set up Travis CI:
+		- Add `NODE_ENV=test`
+		- Add `NPM_TOKEN`
+		- Add `GH_TOKEN`
+		- Add `CODACY_PROJECT_TOKEN`
+		- Add `COVERALLS_REPO_TOKEN`
+		- Turn the repo on.
+	- If the build doesn't automatically start, trigger the first build.
+
+4. By default, successful CI builds will bump to the next `minor` version. Once the version is considered 1.0.0, set up semantic release by modifying the following properties in `.travis.yml` as follows:
+	```yml
+	# Add these lines:
+	deploy:
+        script:
+          - npx semantic-release
+    branch:
+    	except:
+    		- /^v\d+\.\d+\.\d+$/
+	```
 
 ## Directory Structure
 
@@ -76,9 +103,3 @@ root/
 	src/ -> src files written in the latest JS and compiled with Babel.
 	umd/ -> src files compiled to UMD.
 ```
-
-## Environment support
-
-| Node   | CLI   | UMD   | ES Module | Browser   |
-|:------:|:-----:|:-----:|:---------:|:---------:|
-| ✔      | x     | x     | x         | x         |
