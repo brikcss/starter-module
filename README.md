@@ -57,39 +57,94 @@
 	rm -rf <destination>/.git
 	```
 
-2. Set up initial project config:
-	- `package.json`
-	- `.rolluprc.js`
-	- `.releaserc.js` (github assets)
-	- `.travis.yml`
+2. Set up github and code QA suites:
 
-3. When code is ready, set up CI and commit code:
-
-	- Create github repo and set up:
+	- Create github repo. Do not commit anything yet.
+	- Set up code QA and test coverage suites:
 		- [codacy](https://www.codacy.com/)
 		- [coveralls](https://coveralls.io/)
 		- [codeclimate](https://codeclimate.com/)
-	- Update readme shields and install/usage instructions. **Make sure to update the Codacy badge with the correct repo ID.**
-	- Commit code.
 	- Set up Travis CI:
 		- Add `NODE_ENV=test`
 		- Add `NPM_TOKEN`
 		- Add `GH_TOKEN`
-		- Add `CODACY_PROJECT_TOKEN`
+		- Add `CODACY_PROJECT_TOKEN` (you may want to also update codacy badge in readme file since it's this codacy token)
 		- Add `COVERALLS_REPO_TOKEN`
-		- Turn the repo on.
-	- If the build doesn't automatically start, trigger the first build.
+		- Turn the repo on in Travis if you want it to build on the next commit.
 
-4. By default, successful CI builds will bump to the next `minor` version. Once the version is considered 1.0.0, set up semantic release by modifying the following properties in `.travis.yml` as follows:
-	```yml
-	# Add these lines:
-	deploy:
-        script:
-          - npx semantic-release
-    branch:
-    	except:
-    		- /^v\d+\.\d+\.\d+$/
-	```
+3. Before first commit, modify/remove files to needs of project:
+
+	- If it doesn't have a CLI tool:
+		- Remove `/bin`
+		- In `package.json`:
+			- Remove `bin`
+			- Remove `directories.bin`
+	- If it doesn't need browser-sync:
+		- Remove `.browsersync.js`.
+		- In `package.json`:
+			- Remove `serve` script
+			- Remove `browser-sync` dependency
+	- If it doesn't need babel:
+		- Remove `.babelrc`
+		- In `package.json`:
+			- Remove dependencies that match `babel`/`babel-*`
+	- If it doesn't need rollup:
+		- Remove `/src/.babelrc`
+		- Remove `.rolluprc.js`
+		- In `package.json`:
+			- Remove `build` and `prebuild` scripts
+			- Remove dependencies that match `rollup`/`rollup-*`
+	- If it doesn't need JS unit testing or code test coverage:
+		- Remove `/test`
+		- In `package.json`:
+			- Remove dependencies that match `nyc`, `codacy-coverage`, `coveralls`, and `mocha`/`mocha-*`.
+			- Remove `test:unit` and `test:coverage` scripts.
+	- If it's not an NPM package or you don't need semantic release:
+		- Remove `.releaserc.js`
+		- Remove `.npmignore`
+		- Remove `.travis.yml`?? Or at least remove or modify `semantic-release` references in `deploy` script.
+		- In `package.json`, remove `publishConfig` field
+	- If it doesn't use CSS:
+		- Remove `.stylelintignore` and `.stylelintrc.js`
+		- In `package.json`:
+			- Remove dependencies that match `stylelint`/`stylelint-*`
+			- Remove `lint:css` script as well as references to it (i.e., `npm:lint`).
+	- If it doesn't use JS linting:
+		- Remove `.eslintignore` and `.eslintrc.js`
+		- In `package.json`:
+			- Remove dependencies that match `eslint`/`eslint-*`
+			- Remove `lint:js` script as well as references to it (i.e., `npm:lint`).
+	- Modify config files to needs of project:
+		- `package.json`:
+			- Repo name/path.
+			- `description` and `keywords`.
+			- File paths: `bin`, `main`, `module`, `browser`, `umd`, `directories`, `files`.
+			- Dependencies.
+			- Scripts.
+		- `.rolluprc.js`
+		- `.releaserc.js` (github assets)
+		- `.travis.yml`
+	- Update readme / documentation with install, usage, badges, etc. **Make sure to update the Codacy badge with the correct repo ID.**
+
+4. During [initial development phase](https://semver.org/#how-should-i-deal-with-revisions-in-the-0yz-initial-development-phase) (pre v1.0.0), manually bump a minor version for each commit.
+
+5. Once the project is ready for v1.0.0, set up semantic release:
+
+	- Change version in `package.json` to `0.0.0-development`.
+	- Modify `.travis.yml` as follows:
+
+		```yml
+	    deploy:
+	      provider: script
+	      skip_cleanup: true
+	      script:
+	        - npx semantic-release
+	    branch:
+	      except:
+	        - /^v\d+\.\d+\.\d+$/
+		```
+
+	- Commit.
 
 ## Directory Structure
 

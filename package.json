@@ -40,16 +40,21 @@
 		}
 	},
 	"scripts": {
+		"start": "npm run watch",
 		"preci": "npm run build",
-		"ci": "concurrently \"npm run test:lint\" \"npm run test:coverage\"",
+		"ci": "concurrently \"npm run test:lint\" \"npm run test:coverage && npm run test:report\"",
 		"pretest": "npm run build",
-		"test": "concurrently \"npm run test:lint\" \"npm run test:unit\"",
-		"test:lint": "node ./node_modules/.bin/eslint ./src/*.js && echo \"\n[ok] Linter complete.\n\"",
+		"test": "concurrently \"npm run test:lint\" \"npm run test:coverage\"",
+		"test:lint": "concurrently \"npm run lint:js\" \"npm run lint:css\" && echo \"\n[ok] Linter complete.\n\"",
 		"test:unit": "node ./node_modules/.bin/mocha \"./test/*.spec.js\" --reporter=mocha-better-spec-reporter --colors",
-		"test:coverage": "nyc --reporter=lcov --reporter=text mocha \"./test/*.spec.js\" --recursive && concurrently \"cat coverage/lcov.info | codacy-coverage\" \"cat coverage/lcov.info | coveralls\"",
+		"test:coverage": "nyc --reporter=lcov --reporter=text mocha \"./test/*.spec.js\" --recursive",
+		"test:report": "concurrently \"cat coverage/lcov.info | codacy-coverage\" \"cat coverage/lcov.info | coveralls\"",
 		"prebuild": "rimraf dist",
 		"build": "rollup --config=.rolluprc.js",
 		"watch": "concurrently \"npm run build -- --watch\" \"watch src/*.js test/*.spec.js --exec='npm run test:unit'\"",
+		"lint:css": "node ./node_modules/.bin/stylelint src/**/*.{.css,.scss} --format=stylish",
+		"lint:js": "node ./node_modules/.bin/eslint ./src/**/*.js",
+		"serve": "browser-sync start --config ./.browsersyncrc.js",
 		"semantic-release": "semantic-release"
 	},
 	"devDependencies": {
@@ -59,6 +64,7 @@
 		"babel-core": "6.x",
 		"babel-plugin-external-helpers": "6.x",
 		"babel-preset-env": "1.x",
+		"browser-sync": "2.x",
 		"codacy-coverage": "2.x",
 		"concurrently": "3.x",
 		"coveralls": "3.x",

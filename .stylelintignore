@@ -1,19 +1,7 @@
 ### ------------------------------------------------------------------------------------------------
-##  @filename  .gitignore
+##  @filename  .stylelintignore
 ##  @author  brikcss  <https://github.com/brikcss>
-##  @description  https://git-scm.com/docs/gitignore
+##  @description  https://stylelint.io/user-guide/configuration/#stylelintignore
 ### ------------------------------------------------------------------------------------------------
 
-# Node
-/node_modules/
-
-# MacOS
-.DS_Store
-
-# Test results
-/.nyc_output/
-/coverage/
-
-# Build
 /dist/
-/.temp/
