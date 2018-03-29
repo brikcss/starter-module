@@ -34,7 +34,7 @@
 	},
 	"husky": {
 		"hooks": {
-			"pre-commit": "node ./node_modules/.bin/pre-commit-lint",
+			"pre-commit": "NODE_ENV=production node ./node_modules/.bin/pre-commit-lint",
 			"commit-msg": "commitlint -e $GIT_PARAMS && . ./node_modules/.bin/commit-msg-stamp-branch ${GIT_PARAMS}",
 			"pre-push": ". ./node_modules/.bin/pre-push-check-stage && echo \"\n[ok] Pushing code...\""
 		}
@@ -78,6 +78,9 @@
 		"rollup-plugin-node-resolve": "3.x",
 		"rollup-plugin-prettier": "0.x",
 		"rollup-plugin-uglify": "3.x",
-		"semantic-release": "15.x"
+		"semantic-release": "15.x",
+		"stylelint": "9.x",
+		"stylelint-formatter-pretty": "1.x",
+		"stylelint-scss": "2.x"
 	}
 }

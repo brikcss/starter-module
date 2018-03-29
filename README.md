@@ -104,6 +104,9 @@
 		- Remove `.npmignore`
 		- Remove `.travis.yml`?? Or at least remove or modify `semantic-release` references in `deploy` script.
 		- In `package.json`, remove `publishConfig` field
+	- If it doesn't use SASS:
+		- Remove SASS section from `.stylelintrc.js`.
+		- Remove `stylelint-scss` dependency in `package.json`.
 	- If it doesn't use CSS:
 		- Remove `.stylelintignore` and `.stylelintrc.js`
 		- In `package.json`:
