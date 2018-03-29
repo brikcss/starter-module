@@ -57,7 +57,7 @@
 	rm -rf <destination>/.git
 	```
 
-2. Set up github and code QA suites:
+2. Set up github and code quality suites:
 
 	- Create github repo. Do not commit anything yet.
 	- Set up code QA and test coverage suites:
