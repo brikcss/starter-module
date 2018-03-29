@@ -126,9 +126,15 @@
 		- `.travis.yml`
 	- Update readme / documentation with install, usage, badges, etc. **Make sure to update the Codacy badge with the correct repo ID.**
 
-4. During [initial development phase](https://semver.org/#how-should-i-deal-with-revisions-in-the-0yz-initial-development-phase) (pre v1.0.0), manually bump a minor version for each commit.
+4. During the initial development phase (0.y.z), manually increment minor versions for each release. Travis CI will do the rest.
 
-5. Once the project is ready for v1.0.0, set up semantic release:
+	_Some background on this:_
+
+	This project uses [Semantic Release](https://github.com/semantic-release/semantic-release) to make releasing code to NPM and GitHub super easy and fully automatic. _Semantic Release is **awesome** and I'm grateful for its contributors_. The downside is that Semantic Release does not support releases prior to 1.0.0, [making the argument that it is bad practice](https://semantic-release.gitbooks.io/semantic-release/content/docs/support/FAQ.html#can-i-set-the-initial-release-version-of-my-package-to-001), and citing [Semantic Versioning](https://semver.org/) to apparently support the argument. Which is strange, because [Semantic Versioning specs](https://semver.org/#spec-item-4) [actually _recommend_ using major version zero (0.y.z)]((https://semver.org/#how-should-i-deal-with-revisions-in-the-0yz-initial-development-phase)) during the initial development phase, [squelching the argument that it's a bad practice](https://semver.org/#doesnt-this-discourage-rapid-development-and-fast-iteration).
+
+	This starter project has Semantic Release set up and ready to go, but turned "off" by default. For the initial development phase (0.y.z), Travis CI is configured to automatically release to NPM on successful builds. This means all you have to do is [increment the minor version](https://semver.org/#how-should-i-deal-with-revisions-in-the-0yz-initial-development-phase) in `package.json` prior to pushing code to github. This gives you the benefits of using major version zero during initial development, as well as the automagical features of Semantic Release after 1.0.0.
+
+5. Once the project is [ready for release 1.0.0](https://semver.org/#how-do-i-know-when-to-release-100), set up Semantic Release:
 
 	- Change version in `package.json` to `0.0.0-development`.
 	- Modify `.travis.yml` as follows:
