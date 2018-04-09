@@ -117,6 +117,7 @@
 		- In `package.json`:
 			- Remove dependencies that match `eslint`/`eslint-*`
 			- Remove `lint:js` script as well as references to it (i.e., `npm:lint`).
+	- If it will use Stakcss for bundling, install `@brikcss/stakcss` and desired bundlers.
 	- Modify config files to needs of project:
 		- `package.json`:
 			- Repo name/path.
