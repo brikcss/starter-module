@@ -1,10 +1,11 @@
 module.exports = {
 	server: {
-		baseDir: './dist/angularjs/',
-		directory: true,
-		index: 'index.html',
-		routes: {}
+		baseDir: '.',
+		directory: false
+		// index: 'index.html',
+		// routes: {}
 	},
+	startPath: null,
 	files: ['dist'],
 	ignore: [],
 	single: false,
@@ -28,7 +29,6 @@ module.exports = {
 	logSnippet: true,
 	open: true,
 	browser: 'default',
-	startPath: null,
 	reloadOnRestart: true,
 	notify: {
 		styles: {

@@ -104,21 +104,28 @@
 		- Remove `.npmignore`
 		- Remove `.travis.yml`?? Or at least remove or modify `semantic-release` references in `deploy` script.
 		- In `package.json`, remove `publishConfig` field
-	- If it doesn't use SASS:
-		- Remove SASS section from `.stylelintrc.js`.
-		- Remove `stylelint-scss` dependency in `package.json`.
+	- If it doesn't use PostCSS:
+		- Remove `.postcssrc.js`.
+		- In `package.json`:
+			- Remove `colorguard`, `css-mqpacker`, and `cssnano` dependencies.
+			- Remove all `postcss*` dependencies.
 	- If it doesn't use CSS:
 		- Remove `.stylelintignore` and `.stylelintrc.js`
 		- In `package.json`:
 			- Remove dependencies that match `stylelint`/`stylelint-*`
 			- Remove `lint:css` script as well as references to it (i.e., `npm:lint`).
+			- Remove `stak:css` script.
 	- If it doesn't use JS linting:
 		- Remove `.eslintignore` and `.eslintrc.js`
 		- In `package.json`:
 			- Remove dependencies that match `eslint`/`eslint-*`
 			- Remove `lint:js` script as well as references to it (i.e., `npm:lint`).
-	- If it will use Stakcss for bundling, install `@brikcss/stakcss` and desired bundlers.
-	- Modify config files to needs of project:
+	- If it doesn't use Stakcss:
+		- Remove `.stakcssrc.js`.
+		- In `package.json`:
+			- Remove all `stak:*` scripts.
+			- Remove all `@brikcss/stakcss*` dependencies.
+	- Modify config files to needs of project, especially:
 		- `package.json`:
 			- Repo name/path.
 			- `description` and `keywords`.
@@ -126,6 +133,8 @@
 			- Dependencies.
 			- Scripts.
 		- `.rolluprc.js`
+		- `.postcssrc.js`
+		- `.stakcssrc.js`
 		- `.releaserc.js` (github assets)
 		- `.travis.yml`
 	- Update readme / documentation with install, usage, badges, etc. **Make sure to update the Codacy badge with the correct repo ID.**

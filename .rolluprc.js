@@ -42,12 +42,12 @@ let configs = [
 		output: [
 			// CommonJS for Node.
 			{
-				file: pkg.main,
+				file: pkg.main.replace('.min', ''),
 				format: 'cjs'
 			},
 			// ES module for bundlers / build systems.
 			{
-				file: pkg.module,
+				file: pkg.module.replace('.min', ''),
 				format: 'es'
 			}
 		],
@@ -65,13 +65,13 @@ let configs = [
 			// Browser global / IIFE.
 			{
 				name: `brikcss.${lib}`,
-				file: pkg.browser,
+				file: pkg.browser.replace('.min', ''),
 				format: 'iife'
 			},
 			// Browser friendly UMD.
 			{
 				name: `brikcss.${lib}`,
-				file: pkg.umd,
+				file: pkg.umd.replace('.min', ''),
 				format: 'umd'
 			}
 		],
