@@ -92,8 +92,8 @@
 		- Remove `/src/.babelrc`
 		- Remove `.rolluprc.js`
 		- In `package.json`:
-			- Remove `build` and `prebuild` scripts
-			- Remove dependencies that match `rollup`/`rollup-*`
+			- Remove `rollup` script and any references to it.
+			- Remove dependencies that match `rollup`/`rollup-*`.
 	- If it doesn't need JS unit testing or code test coverage:
 		- Remove `/test`
 		- In `package.json`:
