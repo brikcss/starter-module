@@ -95,7 +95,6 @@
 		"postcss-font-magician": "2.1.1",
 		"postcss-import": "11.1.0",
 		"postcss-mixins": "6.2.0",
-		"postcss-nested": "3.0.0",
 		"postcss-nested-ancestors": "2.0.0",
 		"postcss-prefixer": "2.1.0",
 		"postcss-preset-env": "5.0.0",
