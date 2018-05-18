@@ -107,7 +107,11 @@
 	- If it doesn't use PostCSS:
 		- Remove `.postcssrc.js`.
 		- In `package.json`:
-			- Remove `colorguard`, `css-mqpacker`, and `cssnano` dependencies.
+			- Remove dependencies:
+				- `colorguard`
+				- `css-mqpacker`
+				- `cssnano`
+				- `focus-within`
 			- Remove all `postcss*` dependencies.
 	- If it doesn't use CSS:
 		- Remove `.stylelintignore` and `.stylelintrc.js`
