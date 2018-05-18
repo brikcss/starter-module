@@ -65,11 +65,11 @@
 		- [coveralls](https://coveralls.io/)
 		- [codeclimate](https://codeclimate.com/)
 	- Set up Travis CI:
-		- Add `NODE_ENV=test`
 		- Add `NPM_TOKEN`
 		- Add `GH_TOKEN`
-		- Add `CODACY_PROJECT_TOKEN` (you may want to also update codacy badge in readme file since it's this codacy token)
+		- Add `CODACY_PROJECT_TOKEN`
 		- Add `COVERALLS_REPO_TOKEN`
+		- Update codacy badge token in README.md.
 		- Turn the repo on in Travis if you want it to build on the next commit.
 
 3. Before first commit, modify/remove files to needs of project:
