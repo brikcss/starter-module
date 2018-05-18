@@ -75,60 +75,73 @@
 3. Before first commit, modify/remove files to needs of project:
 
 	- If it doesn't have a CLI tool:
-		- Remove `/bin`
+		- Remove `/bin` folder.
 		- In `package.json`:
-			- Remove `bin`
-			- Remove `directories.bin`
+			- Remove `bin`.
+			- Remove `directories.bin`.
 	- If it doesn't need browser-sync:
-		- Remove `.browsersync.js`.
+		- Remove `.browsersync.js` file.
 		- In `package.json`:
-			- Remove `serve` script
-			- Remove `browser-sync` dependency
+			- Remove `serve` script references.
+			- Remove `browser-sync` dependency.
 	- If it doesn't need babel:
-		- Remove `.babelrc`
+		- Remove `.babelrc` file.
 		- In `package.json`:
-			- Remove dependencies that match `babel`/`babel-*`
+			- Remove `babel*` dependencies.
 	- If it doesn't need rollup:
-		- Remove `/src/.babelrc`
-		- Remove `.rolluprc.js`
+		- Remove files:
+			- `/src/.babelrc`
+			- `.rolluprc.js`
 		- In `package.json`:
-			- Remove `rollup` script and any references to it.
+			- Remove `rollup` script references.
 			- Remove dependencies that match `rollup`/`rollup-*`.
 	- If it doesn't need JS unit testing or code test coverage:
-		- Remove `/test`
+		- Remove `/test` folder.
 		- In `package.json`:
-			- Remove dependencies that match `nyc`, `codacy-coverage`, `coveralls`, and `mocha`/`mocha-*`.
-			- Remove `test:unit` and `test:coverage` scripts.
+			- Remove dependencies:
+				- `nyc`
+				- `codacy-coverage`
+				- `coveralls`
+				- `mocha*`
+			- Remove test scripts:
+				- `test:unit`
+				- `test:coverage`
+				- `test:submit`
 	- If it's not an NPM package or you don't need semantic release:
-		- Remove `.releaserc.js`
-		- Remove `.npmignore`
-		- Remove `.travis.yml`?? Or at least remove or modify `semantic-release` references in `deploy` script.
-		- In `package.json`, remove `publishConfig` field
+		- Remove files:
+			- `.releaserc.js`
+			- `.npmignore`
+			- `.travis.yml`?? (Or modify references to `semantic-release` in `deploy` script)
+		- In `package.json`:
+			- Remove `publishConfig` field.
 	- If it doesn't use PostCSS:
-		- Remove `.postcssrc.js`.
+		- Remove `.postcssrc.js` file.
 		- In `package.json`:
 			- Remove dependencies:
 				- `colorguard`
 				- `css-mqpacker`
 				- `cssnano`
 				- `focus-within`
-			- Remove all `postcss*` dependencies.
+				- `postcss*`
 	- If it doesn't use CSS:
-		- Remove `.stylelintignore` and `.stylelintrc.js`
+		- Remove files:
+			- `.stylelintignore`
+			- `.stylelintrc.js`
 		- In `package.json`:
-			- Remove dependencies that match `stylelint`/`stylelint-*`
-			- Remove `lint:css` script as well as references to it (i.e., `npm:lint`).
-			- Remove `stak:css` script.
+			- Remove `stylelint*` dependencies.
+			- Remove script references to:
+				- `lint:css`
+				- `stak:css`
 	- If it doesn't use JS linting:
-		- Remove `.eslintignore` and `.eslintrc.js`
+		- Remove `.eslintignore` and `.eslintrc.js` files.
 		- In `package.json`:
-			- Remove dependencies that match `eslint`/`eslint-*`
-			- Remove `lint:js` script as well as references to it (i.e., `npm:lint`).
+			- Remove `eslint`/`eslint-*` dependencies.
+			- Remove `lint:js` script references.
 	- If it doesn't use Stakcss:
-		- Remove `.stakcssrc.js`.
+		- Remove `.stakcssrc.js` file.
 		- In `package.json`:
-			- Remove all `stak:*` scripts.
-			- Remove all `@brikcss/stakcss*` dependencies.
+			- Remove `stak:*` script references.
+			- Remove `@brikcss/stakcss*` dependencies.
 	- Modify config files to needs of project, especially:
 		- `package.json`:
 			- Repo name/path.
