@@ -118,6 +118,7 @@
 		- Remove `.postcssrc.js` file.
 		- In `package.json`:
 			- Remove dependencies:
+				- `autoprefixer`
 				- `colorguard`
 				- `css-mqpacker`
 				- `cssnano`
