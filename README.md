@@ -87,9 +87,12 @@
 			- Remove `serve` script references.
 			- Remove `browser-sync` dependency.
 	- If it doesn't need babel:
-		- Remove `.babelrc` file.
+		- Remove `.babelrc` files:
+			- `.babelrc`
+			- `src/.babelrc`
 		- In `package.json`:
 			- Remove `babel*` dependencies.
+			- Remove `*babel` dependencies.
 	- If it doesn't need rollup:
 		- Remove files:
 			- `/src/.babelrc`
@@ -123,9 +126,9 @@
 				- `autoprefixer`
 				- `colorguard`
 				- `css-mqpacker`
-				- `cssnano`
 				- `focus-within`
 				- `postcss*`
+				- `*postcss`
 	- If it doesn't use CSS:
 		- Remove files:
 			- `.stylelintignore`
