@@ -50,16 +50,18 @@
 
 ## Install
 
-1. Clone the repo and remove git tracking:
+1. Set up git and github (do not commit anything yet):
 
-	```sh
-	git clone git@github.com:brikcss/starter-module.git <destination> --depth=1
-	rm -rf <destination>/.git
-	```
+	- Clone the starter-module repo and remove git tracking:
+		```sh
+		git clone git@github.com:brikcss/starter-module.git <destination> --depth=1
+		rm -rf <destination>/.git
+		```
+	- Initialize the local git repo with `git init` (`.git` was removed in the previous step in order to remove tracking for the `starter-module` repo).
+	- Create an empty repo on github.
 
-2. Set up github and code quality suites:
+2. Set up CI and code quality suites:
 
-	- Create github repo. Do not commit anything yet.
 	- Set up code QA and test coverage suites:
 		- [codacy](https://www.codacy.com/)
 		- [coveralls](https://coveralls.io/)
@@ -72,7 +74,7 @@
 		- Update codacy badge token in README.md.
 		- Turn the repo on in Travis if you want it to build on the next commit.
 
-3. Before first commit, modify/remove files to needs of project:
+3. _Before the first commit_, modify/remove files to needs of project:
 
 	- If it doesn't have a CLI tool:
 		- Remove `/bin` folder.
@@ -157,19 +159,32 @@
 		- `.travis.yml`
 	- Update readme / documentation with install, usage, badges, etc. **Make sure to update the Codacy badge with the correct repo ID.**
 
-4. During the initial development phase (0.y.z), manually increment minor versions for each release. Travis CI will do the rest.
+4. Sync and push local git changes to the remote repo:
 
-	_Some background on this:_
+	```sh
+	git add ...
+	git commit ...
+	git remote add origin git@github.com:<userid>/<repo>.git
+	git push -u origin master
+	```
 
-	This project uses [Semantic Release](https://github.com/semantic-release/semantic-release) to make releasing code to NPM and GitHub super easy and fully automatic. _Semantic Release is **awesome** and I'm grateful for its contributors_. The downside is that Semantic Release does not support releases prior to 1.0.0, [making the argument that it is bad practice](https://semantic-release.gitbooks.io/semantic-release/content/docs/support/FAQ.html#can-i-set-the-initial-release-version-of-my-package-to-001), and citing [Semantic Versioning](https://semver.org/) to apparently support the argument. Which is strange, because [Semantic Versioning specs](https://semver.org/#spec-item-4) [actually _recommend_ using major version zero (0.y.z)]((https://semver.org/#how-should-i-deal-with-revisions-in-the-0yz-initial-development-phase)) during the initial development phase, [squelching the argument that it's a bad practice](https://semver.org/#doesnt-this-discourage-rapid-development-and-fast-iteration).
+5. _The automated release process_.
 
-	This starter project has Semantic Release set up and ready to go, but turned "off" by default. For the initial development phase (0.y.z), Travis CI is configured to automatically release to NPM on successful builds. This means all you have to do is [increment the minor version](https://semver.org/#how-should-i-deal-with-revisions-in-the-0yz-initial-development-phase) in `package.json` prior to pushing code to github. This gives you the benefits of using major version zero during initial development, as well as the automagical features of Semantic Release after 1.0.0.
+	**TLDR:**
 
-5. Once the project is [ready for release 1.0.0](https://semver.org/#how-do-i-know-when-to-release-100), set up Semantic Release:
+	During the initial development phase (versions `0.y.z`), manually increment the version in `package.json` for each release. Once version `1.0.0` is ready, make a few simple changes to have [Semantic Release](https://github.com/semantic-release/semantic-release) automagically manage versions and releases for you (see below for details and instructions).
 
+	**Some background:**
+
+	[Semantic Release](https://github.com/semantic-release/semantic-release) makes releasing code to NPM and GitHub super easy and fully automatic.  _Semantic Release is **awesome** and I'm grateful for its contributors_. The downside is that Semantic Release does not support releases prior to 1.0.0, [making the argument that it is bad practice](https://semantic-release.gitbooks.io/semantic-release/content/docs/support/FAQ.html#can-i-set-the-initial-release-version-of-my-package-to-001), and citing [Semantic Versioning](https://semver.org/) to apparently support the argument. Which is strange, because [Semantic Versioning specs](https://semver.org/#spec-item-4) [actually _recommend_ using major version zero (0.y.z)]((https://semver.org/#how-should-i-deal-with-revisions-in-the-0yz-initial-development-phase)) during the initial development phase, [squelching the argument that it's a bad practice](https://semver.org/#doesnt-this-discourage-rapid-development-and-fast-iteration).
+
+	This starter project has Semantic Release set up and ready to go, but turned "off" by default. For the initial development phase (0.y.z), Travis CI is configured to automatically release to NPM on successful builds. This means all you have to do is [increment the minor version](https://semver.org/#how-should-i-deal-with-revisions-in-the-0yz-initial-development-phase) in `package.json` for each release. This gives you the benefits of using major version zero during initial development, as well as the fully automated features of Semantic Release after version `1.0.0`.
+
+	**How to set up a fully automated Semantic Release process:**
+
+	- _IMPORTANT:_ Make sure the project is [ready for release 1.0.0](https://semver.org/#how-do-i-know-when-to-release-100). If the version in `package.json` is anything less than `1.0.0`, Semantic Release will move it to version `1.0.0`.
 	- Change version in `package.json` to `0.0.0-development`.
 	- Modify `.travis.yml` as follows:
-
 		```yml
 	    deploy:
 	      provider: script
@@ -180,8 +195,8 @@
 	      except:
 	        - /^v\d+\.\d+\.\d+$/
 		```
-
-	- Commit.
+	- Commit and push code.
+	- _Celebrate!!! You no longer have to worry about modifying the `package.json` version._ Each push to GitHub will now automatically release code to both NPM and GitHub.
 
 ## Directory Structure
 
