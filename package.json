@@ -43,8 +43,7 @@
 	},
 	"scripts": {
 		"start": "npm run watch",
-		"preci": "npm run build",
-		"ci": "concurrently \"npm run test:lint\" \"npm run test:coverage && npm run test:submit\"",
+		"ci": "npm test && npm run test:submit",
 		"pretest": "npm run build",
 		"test": "concurrently \"npm run test:lint\" \"npm run test:coverage\"",
 		"test:lint": "concurrently \"npm run lint:js\" \"npm run lint:css\" && echo \"\n[ok] Linter complete.\n\"",
