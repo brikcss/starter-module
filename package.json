@@ -66,10 +66,11 @@
 	"devDependencies": {
 		"@brikcss/eslint-config": "0.1.4",
 		"@brikcss/git-hooks": "1.0.9",
+		"@brikcss/merge": "1.0.7",
 		"@brikcss/stakcss": "0.7.1",
 		"@brikcss/stakcss-bundler-copy": "0.1.0",
 		"@brikcss/stakcss-bundler-ejs": "0.0.1",
-		"@brikcss/stakcss-bundler-postcss": "0.2.3",
+		"@brikcss/stakcss-bundler-postcss": "0.2.4",
 		"@brikcss/watcher-cli": "1.0.0",
 		"@commitlint/cli": "6.2.0",
 		"autoprefixer": "8.5.0",

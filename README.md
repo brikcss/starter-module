@@ -1,7 +1,5 @@
 # Starter Module
 
-> Starter project for a JS / Node module.
-
 <!-- Shields. -->
 <p>
 	<!-- NPM version. -->
@@ -41,6 +39,10 @@
 		<img alt="License" src="https://img.shields.io/npm/l/express.svg?style=flat-square">
 	</a> -->
 </p>
+
+Starter project for a JS / Node module.
+
+---
 
 ## Environment support
 
@@ -148,6 +150,7 @@
 		- In `package.json`:
 			- Remove `stak:*` script references.
 			- Remove `@brikcss/stakcss*` dependencies.
+			- Remove `@brikcss/merge` dependency.
 	- Modify config files to needs of project, especially:
 		- `package.json`:
 			- Repo name/path.
