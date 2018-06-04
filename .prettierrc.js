@@ -10,8 +10,8 @@ module.exports = {
 	useTabs: true,
 	tabWidth: 4,
 	semi: true,
-	arrowParens: 'always',
-	parser: 'babylon'
+	arrowParens: 'always'
+	// parser: 'babylon'
 	// overrides: [
 	// 	{
 	// 		files: '.prettierrc',
@@ -23,6 +23,12 @@ module.exports = {
 	// 		files: '.*rc',
 	// 		options: {
 	// 			parser: 'json'
+	// 		}
+	// 	},
+	// 	{
+	// 		files: '*.js',
+	// 		options: {
+	// 			parser: 'babel'
 	// 		}
 	// 	},
 	// 	{
@@ -44,6 +50,6 @@ module.exports = {
 	// 			parser: 'markdown',
 	// 			printWidth: false
 	// 		}
-	// 	}
+	// 	},
 	// ]
 };
