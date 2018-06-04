@@ -13,6 +13,7 @@ module.exports = {
 			// root: process.cwd(),
 			// path: [],
 			// plugins: [],
+			// resolve: (id, baseDir, importOptions) => {},
 			// load: (filename, importOptions) => {},
 			// skipDuplicates: true,
 			// addModulesDirectories: []
