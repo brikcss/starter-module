@@ -44,11 +44,15 @@ Starter project for a JS / Node module.
 
 ---
 
-## Environment support
+## Environment and browser support
 
 | Node   | CLI   | UMD   | ES Module | Browser   |
 |:------:|:-----:|:-----:|:---------:|:---------:|
-| ✔      | x     | ✔    | ✔        | ✔         |
+| ✓      | x     | ✓     | ✓         | ✓         |
+
+| Chrome | Firefox | Safari | Edge | IE  | iOS | Android |
+|:------:|:-------:|:------:|:----:|:---:|:---:|:-------:|
+| ✓      | ✓       | ✓      | ✓    | 11  | ✓   | ✓       |
 
 ## Install
 
@@ -83,6 +87,13 @@ Starter project for a JS / Node module.
 		- In `package.json`:
 			- Remove `bin`.
 			- Remove `directories.bin`.
+	- If it's not an NPM package or you don't need semantic release:
+		- Remove files:
+			- `.releaserc.js`
+			- `.npmignore`
+			- `.travis.yml`?? (Or modify references to `semantic-release` in `deploy` script)
+		- In `package.json`:
+			- Remove `publishConfig` field.
 	- If it doesn't need browser-sync:
 		- Remove `.browsersync.js` file.
 		- In `package.json`:
@@ -114,13 +125,6 @@ Starter project for a JS / Node module.
 				- `test:unit`
 				- `test:coverage`
 				- `test:submit`
-	- If it's not an NPM package or you don't need semantic release:
-		- Remove files:
-			- `.releaserc.js`
-			- `.npmignore`
-			- `.travis.yml`?? (Or modify references to `semantic-release` in `deploy` script)
-		- In `package.json`:
-			- Remove `publishConfig` field.
 	- If it doesn't use PostCSS:
 		- Remove `.postcssrc.js` file.
 		- In `package.json`:
@@ -140,6 +144,11 @@ Starter project for a JS / Node module.
 			- Remove script references to:
 				- `lint:css`
 				- `stak:css`
+	- If it doesn't need UI regression testing:
+		- Remove `.shotsrc.js`.
+		- In `package.json`:
+			- Remove `test:ui` script.
+			- Remove `@brikcss/shots` dependency.
 	- If it doesn't use JS linting:
 		- Remove `.eslintignore` and `.eslintrc.js` files.
 		- In `package.json`:
@@ -160,7 +169,9 @@ Starter project for a JS / Node module.
 			- Scripts.
 		- `.rolluprc.js`
 		- `.postcssrc.js`
+		- `.prettierrc.js`
 		- `.stakcssrc.js`
+		- `.shotsrc.js`
 		- `.releaserc.js` (github assets)
 		- `.travis.yml`
 	- Update readme / documentation with install, usage, badges, etc. **Make sure to update the Codacy badge with the correct repo ID.**
