@@ -54,6 +54,8 @@ Starter project for a JS / Node module.
 |:------:|:-------:|:------:|:----:|:---:|:---:|:-------:|
 | ✓      | ✓       | ✓      | ✓    | 11  | ✓   | ✓       |
 
+\* _Note: Since [CSS Variables](https://caniuse.com/#search=css%20variables) are used, IE11 is supported with the use of a custom variables polyfill, such as [postcss-var-shim](https://github.com/luwes/postcss-var-shim)._
+
 ## Install
 
 1. Set up git and github (do not commit anything yet):
@@ -80,87 +82,97 @@ Starter project for a JS / Node module.
 		- Update codacy badge token in README.md.
 		- Turn the repo on in Travis if you want it to build on the next commit.
 
-3. _Before the first commit_, modify/remove files to needs of project:
+3. Modify files to the needs of the project (_before first commit_):
 
-	- If it doesn't have a CLI tool:
-		- Remove `/bin` folder.
+	- CLI:
+		- `/bin` folder.
 		- In `package.json`:
-			- Remove `bin`.
-			- Remove `directories.bin`.
-	- If it's not an NPM package or you don't need semantic release:
-		- Remove files:
+			- `bin`.
+			- `directories.bin`.
+
+	- NPM / Semantic Release:
+		- Files:
 			- `.releaserc.js`
 			- `.npmignore`
 			- `.travis.yml`?? (Or modify references to `semantic-release` in `deploy` script)
 		- In `package.json`:
-			- Remove `publishConfig` field.
-	- If it doesn't need browser-sync:
-		- Remove `.browsersync.js` file.
+			- `publishConfig`
+
+	- JS features:
+		- JS:
+			- Remove `.eslintignore` and `.eslintrc.js` files.
+			- In `package.json`:
+				- Remove `eslint`/`eslint-*` dependencies.
+				- Remove `lint:js` script references.
+		- Babel transpiler:
+			- Files:
+				- `.babelrc`
+				- `src/.babelrc`
+			- In `package.json`:
+				- `babel*` dependencies.
+				- `*babel` dependencies.
+		- RollupJS bundler:
+			- Files:
+				- `/src/.babelrc`
+				- `.rolluprc.js`
+			- In `package.json`:
+				- `rollup` scripts.
+				- `rollup`/`rollup-*` dependencies.
+		- Unit testing / code coverage:
+			- Files:
+				- `/test/**`
+			- In `package.json`:
+				- Dependencies:
+					- `nyc`
+					- `codacy-coverage`
+					- `coveralls`
+					- `mocha*`
+				- Scripts:
+					- `test:unit`
+					- `test:coverage`
+					- `test:submit`
+
+	- CSS features:
+		- CSS:
+			- Remove files:
+				- `.stylelintignore`
+				- `.stylelintrc.js`
+			- In `package.json`:
+				- Remove `stylelint*` dependencies.
+				- Remove script references to:
+					- `lint:css`
+					- `stak:css`
+		- If it doesn't use PostCSS:
+			- Remove `.postcssrc.js` file.
+			- In `package.json`:
+				- Remove dependencies:
+					- `autoprefixer`
+					- `colorguard`
+					- `css-mqpacker`
+					- `focus-within`
+					- `postcss*`
+					- `*postcss`
+
+	- Local development & testing:
+		- Browser-sync:
+			- Remove `.browsersync.js` file.
+			- In `package.json`:
+				- Remove `serve` script references.
+				- Remove `browser-sync` dependency.
+		- UI regression testing:
+			- Remove `.shotsrc.js`.
+			- In `package.json`:
+				- Remove `test:ui` script.
+				- Remove `@brikcss/shots` dependency.
+
+	- Stakcss generic bundler:
+		- `.stakcssrc.js`
 		- In `package.json`:
-			- Remove `serve` script references.
-			- Remove `browser-sync` dependency.
-	- If it doesn't need babel:
-		- Remove `.babelrc` files:
-			- `.babelrc`
-			- `src/.babelrc`
-		- In `package.json`:
-			- Remove `babel*` dependencies.
-			- Remove `*babel` dependencies.
-	- If it doesn't need rollup:
-		- Remove files:
-			- `/src/.babelrc`
-			- `.rolluprc.js`
-		- In `package.json`:
-			- Remove `rollup` script references.
-			- Remove dependencies that match `rollup`/`rollup-*`.
-	- If it doesn't need JS unit testing or code test coverage:
-		- Remove `/test` folder.
-		- In `package.json`:
-			- Remove dependencies:
-				- `nyc`
-				- `codacy-coverage`
-				- `coveralls`
-				- `mocha*`
-			- Remove test scripts:
-				- `test:unit`
-				- `test:coverage`
-				- `test:submit`
-	- If it doesn't use PostCSS:
-		- Remove `.postcssrc.js` file.
-		- In `package.json`:
-			- Remove dependencies:
-				- `autoprefixer`
-				- `colorguard`
-				- `css-mqpacker`
-				- `focus-within`
-				- `postcss*`
-				- `*postcss`
-	- If it doesn't use CSS:
-		- Remove files:
-			- `.stylelintignore`
-			- `.stylelintrc.js`
-		- In `package.json`:
-			- Remove `stylelint*` dependencies.
-			- Remove script references to:
-				- `lint:css`
-				- `stak:css`
-	- If it doesn't need UI regression testing:
-		- Remove `.shotsrc.js`.
-		- In `package.json`:
-			- Remove `test:ui` script.
-			- Remove `@brikcss/shots` dependency.
-	- If it doesn't use JS linting:
-		- Remove `.eslintignore` and `.eslintrc.js` files.
-		- In `package.json`:
-			- Remove `eslint`/`eslint-*` dependencies.
-			- Remove `lint:js` script references.
-	- If it doesn't use Stakcss:
-		- Remove `.stakcssrc.js` file.
-		- In `package.json`:
-			- Remove `stak:*` script references.
-			- Remove `@brikcss/stakcss*` dependencies.
-			- Remove `@brikcss/merge` dependency.
-	- Modify config files to needs of project, especially:
+			- `stak:*` scripts.
+			- `@brikcss/stakcss*` dependencies.
+			- `@brikcss/merge` dependency.
+
+	- Config files:
 		- `package.json`:
 			- Repo name/path.
 			- `description` and `keywords`.
@@ -174,7 +186,10 @@ Starter project for a JS / Node module.
 		- `.shotsrc.js`
 		- `.releaserc.js` (github assets)
 		- `.travis.yml`
-	- Update readme / documentation with install, usage, badges, etc. **Make sure to update the Codacy badge with the correct repo ID.**
+
+	- Docs:
+		- Readme / documentation with install, usage, badges, etc.
+		- **Make sure to update the Codacy badge with the correct repo ID.**
 
 4. Sync and push local git changes to the remote repo:
 
