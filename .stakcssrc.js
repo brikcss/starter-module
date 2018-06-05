@@ -1,4 +1,10 @@
-module.exports = {
+// Setup.
+const env = process.env.NODE_ENV;
+const isProd = ['production', 'prod', 'test'].includes(env);
+const postcssPlugins = require('./.postcssrc.js');
+
+// Config export object.
+let config = {
 	html: {
 		source: 'src/index.html',
 		output: 'dist/index.html',
@@ -7,7 +13,13 @@ module.exports = {
 	css: {
 		source: 'src/app.css',
 		output: './dist/css/app.css',
-		bundlers: ['@brikcss/stakcss-bundler-postcss']
+		bundlers: [
+			{
+				run: '@brikcss/stakcss-bundler-postcss',
+				options: { skipConfig: true },
+				plugins: postcssPlugins('autoprefixer', 'postcss-reporter')
+			}
+		]
 	},
 	assets: {
 		source: 'static/**/*',
@@ -27,3 +39,19 @@ module.exports = {
 		]
 	}
 };
+
+if (isProd) {
+	config.css_min = Object.assign({}, config.css, {
+		bundlers: [
+			{
+				run: '@brikcss/stakcss-bundler-postcss',
+				options: {
+					skipConfig: true
+				},
+				plugins: postcssPlugins('autoprefixer', 'postcss-csso')
+			}
+		]
+	});
+}
+
+module.exports = config;

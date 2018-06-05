@@ -17,7 +17,8 @@ import merge from '@brikcss/merge';
 import pkg from './package.json';
 
 // Flags.
-const isProd = process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'test';
+const env = process.env.NODE_ENV;
+const isProd = ['production', 'prod', 'test'].includes(env);
 
 // Build each config variation.
 //

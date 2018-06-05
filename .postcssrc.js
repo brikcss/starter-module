@@ -1,14 +1,18 @@
-/** ------------------------------------------------------------------------------------------------
- *  @filename  .postcssrc.js
- *  @author  brikcss  <https://github.com/brikcss>
- *  @description  PostCSS configuration file.
- ** --------------------------------------------------------------------------------------------- */
+/**
+ * .postcssrc.js
+ * -------------
+ * This file is used in combination with `.stakcssrc.js` (which runs postcss) to generate postcss
+ * plugins for multiple postcss configurations.
+ * =================================================================================================
+ */
 
-const isProd = process.env.NODE_ENV === 'prod' || process.env.NODE_ENV === 'production';
-module.exports = {
-	map: !isProd,
-	plugins: [
-		require('postcss-import')({
+const env = process.env.NODE_ENV;
+const isProd = ['production', 'test'].includes(env);
+
+module.exports = (...plugins) => {
+	const pluginsList = {
+		// Import CSS files for processing.
+		'postcss-import': {
 			// filter: (filepath) => {},
 			// root: process.cwd(),
 			// path: [],
@@ -17,48 +21,48 @@ module.exports = {
 			// load: (filename, importOptions) => {},
 			// skipDuplicates: true,
 			// addModulesDirectories: []
-		}),
+		},
 
-		// Add custom css/js mixins.
-		require('postcss-mixins')({
+		// Create custom css/js mixins.
+		'postcss-mixins': {
 			mixinsDir: './src/mixins'
-		}),
+		},
 
-		// Manages assets.
-		require('postcss-assets')({
+		// Manage assets.
+		'postcss-assets': {
 			basePath: 'src/',
 			baseUrl: '/',
 			cachebuster: true,
 			cache: true,
 			loadPaths: [],
 			relative: true
-		}),
+		},
 
 		// Rebase, inline, or copy assets. Works with postcss-assets.
-		require('postcss-url')(),
+		'postcss-url': {},
 
 		// Auto generate @font-face rules.
-		// require('postcss-font-magician')({
-		// 	variants: {}, // Download specific variants.
-		// 	hosted: [], // Directory(ies) of self-hosted fonts.
-		// 	aliases: {}, // Aliases for given fonts.
-		// 	formats: 'local woff2 woff eot',
-		// 	foundries: 'custom hosted bootstrap google',
-		// 	custom: {}, // Custom settings.
-		// }),
+		'postcss-font-magician': {
+			// 	variants: {}, // Download specific variants.
+			// 	hosted: [], // Directory(ies) of self-hosted fonts.
+			// 	aliases: {}, // Aliases for given fonts.
+			// 	formats: 'local woff2 woff eot',
+			// 	foundries: 'custom hosted bootstrap google',
+			// 	custom: {}, // Custom settings.
+		},
 
 		// Polyfills css variables/properties.
-		require('postcss-css-variables')({
+		'postcss-css-variables': {
 			preserve: true
-		}),
+		},
 
 		// Enables custom property sets.
-		require('postcss-apply')({
+		'postcss-apply': {
 			preserve: true
-		}),
+		},
 
 		// Polyfill future css features based on supported browsers.
-		require('postcss-preset-env')({
+		'postcss-preset-env': {
 			// Determines which css features to polyfill.
 			stage: 1,
 			// Toggle features.
@@ -104,29 +108,29 @@ module.exports = {
 			// Determine which features to polyfill based on browserslist.
 			browsers: 'last 2 versions',
 			// Insert plugins into the chain.
-			insertBefore: {
-				'nesting-rules': [
-					// Enables nested ancestor selectors.
-					require('postcss-nested-ancestors')({
-						placeholder: '^&'
-					})
-				]
-			},
+			// insertBefore: {
+			// 	'nesting-rules': [
+			// 		// Enables nested ancestor selectors.
+			// 		require('postcss-nested-ancestors')({
+			// 			placeholder: '^&'
+			// 		})
+			// 	]
+			// },
 			insertAfter: {}
-		}),
+		},
 
 		// Packs multiple media queries into one.
-		require('css-mqpacker')(),
+		'css-mqpacker': {},
 
 		// Combines colors within a specificed threshold to reduce number of color values.
-		// require('colorguard')({
-		// 	ignore: [],
-		// 	threshold: 3,
-		// 	whitelist: [[]]
-		// }),
+		colorguard: {
+			// ignore: [],
+			// threshold: 3,
+			// whitelist: [[]]
+		},
 
 		// Convert pixel values to rems.
-		require('postcss-pxtorem')({
+		'postcss-pxtorem': {
 			rootValue: 8,
 			unitPrecision: 5,
 			propList: ['*'],
@@ -134,35 +138,35 @@ module.exports = {
 			replace: true,
 			mediaQuery: false,
 			minPixelValue: 0
-		})
+		},
 
 		// Adds specified prefix to all classes and ids.
-		// require('postcss-prefixer')({
-		// 	prefix: '',
-		// 	ignore: []
-		// }),
-	].concat(
-		isProd
-			? [
-					// Auto generates vendor prefixed properties based on browser support.
-					require('autoprefixer')(),
+		'postcss-prefixer': {
+			// prefix: '',
+			// ignore: []
+		},
 
-					// Minify output css.
-					require('postcss-csso')({
-						restructure: true,
-						forceMediaMerge: false,
-						comments: true, // 'exclamation' (true) | 'first-exclamation' | false
-						usage: null,
-						logger: null
-					})
-			  ]
-			: [
-					// Log postcss output to console.
-					require('postcss-reporter')({
-						clearReportedMessages: true,
-						throwError: isProd,
-						sortByPosition: true
-					})
-			  ]
-	)
+		// Auto generates vendor prefixed properties based on browser support.
+		autoprefixer: {},
+
+		// Minify output css.
+		'postcss-csso': {
+			restructure: true,
+			forceMediaMerge: false,
+			comments: true, // 'exclamation' (true) | 'first-exclamation' | false
+			usage: null,
+			logger: null
+		},
+
+		// Log postcss output to console.
+		'postcss-reporter': {
+			clearReportedMessages: true,
+			throwError: isProd,
+			sortByPosition: true
+		}
+	};
+
+	return plugins.map((plugin) => {
+		return require(plugin)(pluginsList[plugin]);
+	});
 };
