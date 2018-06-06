@@ -7,7 +7,7 @@ module.exports = {
 	},
 	startPath: null,
 	files: ['dist'],
-	ignore: [],
+	ignore: ['src/**/*', '**/*.spec.js', './*.json', './.*'],
 	single: false,
 	watch: true,
 	watchEvents: ['add', 'change', 'unlink'],

@@ -180,10 +180,11 @@ Starter project for a JS / Node module.
 			- Dependencies.
 			- Scripts.
 		- `.rolluprc.js`
-		- `.postcssrc.js`
 		- `.prettierrc.js`
+		- `.postcssrc.js`
 		- `.stakcssrc.js`
 		- `.shotsrc.js`
+		- `.browsersyncrc.js`
 		- `.releaserc.js` (github assets)
 		- `.travis.yml`
 

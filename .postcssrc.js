@@ -57,9 +57,7 @@ module.exports = (...plugins) => {
 		},
 
 		// Enables custom property sets.
-		'postcss-apply': {
-			preserve: true
-		},
+		'postcss-apply': {},
 
 		// Polyfill future css features based on supported browsers.
 		'postcss-preset-env': {
