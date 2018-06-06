@@ -42,7 +42,8 @@
 		}
 	},
 	"scripts": {
-		"start": "npm run watch",
+		"prestart": "npm run build",
+		"start": "concurrently \"npm run watch\" \"npm run serve\"",
 		"ci": "npm test && npm run test:submit",
 		"pretest": "npm run build",
 		"test": "concurrently \"npm run test:lint\" \"npm run test:coverage\"",
