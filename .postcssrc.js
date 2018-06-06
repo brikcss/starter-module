@@ -15,7 +15,7 @@ module.exports = (...plugins) => {
 		'postcss-import': {
 			// filter: (filepath) => {},
 			// root: process.cwd(),
-			// path: [],
+			path: ['node_modules']
 			// plugins: [],
 			// resolve: (id, baseDir, importOptions) => {},
 			// load: (filename, importOptions) => {},
@@ -25,7 +25,8 @@ module.exports = (...plugins) => {
 
 		// Create custom css/js mixins.
 		'postcss-mixins': {
-			mixinsDir: './src/mixins'
+			mixinsFiles: ['src/mixins/*.js', 'node_modules/@brikcss/*/src/mixins/*.js']
+			// mixinsDir: './src/mixins'
 		},
 
 		// Manage assets.
@@ -132,7 +133,7 @@ module.exports = (...plugins) => {
 			rootValue: 8,
 			unitPrecision: 5,
 			propList: ['*'],
-			selectorBlackList: [],
+			selectorBlackList: ['html', 'body'],
 			replace: true,
 			mediaQuery: false,
 			minPixelValue: 0

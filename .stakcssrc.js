@@ -1,7 +1,8 @@
 // Setup.
 const env = process.env.NODE_ENV;
 const isProd = ['production', 'prod', 'test'].includes(env);
-const postcssPlugins = require('./.postcssrc.js');
+const loadPostcssPlugins = require('./.postcssrc.js');
+const basePostcssPlugins = ['autoprefixer'];
 
 // Config export object.
 let config = {
@@ -16,8 +17,8 @@ let config = {
 		bundlers: [
 			{
 				run: '@brikcss/stakcss-bundler-postcss',
-				options: { skipConfig: true },
-				plugins: postcssPlugins('autoprefixer', 'postcss-reporter')
+				options: { skipConfig: true, map: false },
+				plugins: loadPostcssPlugins(...basePostcssPlugins.concat(['postcss-reporter']))
 			}
 		]
 	},
@@ -42,13 +43,12 @@ let config = {
 
 if (isProd) {
 	config.css_min = Object.assign({}, config.css, {
+		output: 'dist/css/app.min.css',
 		bundlers: [
 			{
 				run: '@brikcss/stakcss-bundler-postcss',
-				options: {
-					skipConfig: true
-				},
-				plugins: postcssPlugins('autoprefixer', 'postcss-csso')
+				options: { skipConfig: true, map: false },
+				plugins: loadPostcssPlugins(...basePostcssPlugins.concat(['postcss-csso']))
 			}
 		]
 	});
