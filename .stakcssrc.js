@@ -1,10 +1,16 @@
-// Setup.
+/** ================================================================================================
+ *  Setup.
+ ** ------ */
+
 const env = process.env.NODE_ENV;
 const isProd = ['production', 'prod', 'test'].includes(env);
 const loadPostcssPlugins = require('./.postcssrc.js');
 const basePostcssPlugins = ['autoprefixer'];
 
-// Config export object.
+/** ================================================================================================
+ *  Config export object.
+ ** --------------------- */
+
 let config = {
 	html: {
 		source: 'src/index.html',
