@@ -1,5 +1,7 @@
 # Starter Module
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/brikcss/starter-module.svg)](https://greenkeeper.io/)
+
 Starter project for a JS / Node module.
 
 ---
