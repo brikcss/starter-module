@@ -1,8 +1,4 @@
-/** ------------------------------------------------------------------------------------------------
- *  @filename  .prettierrc.js
- *  @author  brikcss  <https://github.com/brikcss>
- *  @description  https://prettier.io/docs/en/configuration.html
- ** --------------------------------------------------------------------------------------------- */
+/*! .prettierrc.js | @author Brikcss (https://github.com/brikcss) | @reference (https://prettier.io) */
 
 module.exports = {
   arrowParens: 'always',
@@ -15,4 +11,13 @@ module.exports = {
   tabWidth: 2,
   trailingComma: 'all',
   useTabs: false,
-};
+  overrides: [
+    {
+      files: '*.md',
+      options: {
+        tabWidth: 4,
+        printWidth: 80
+      }
+    }
+  ]
+}

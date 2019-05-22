@@ -1,103 +1,57 @@
 {
-	"name": "@brikcss/starter-module",
-	"version": "0.0.1",
-	"description": "Starter repo for building node, CLI, JS, or browser modules.",
-	"author": "Brikcss <https://github.com/brikcss>",
-	"contributors": [
-		"The Zimmee <thezimmee@gmail.com>"
-	],
-	"homepage": "https://github.com/brikcss/starter-module",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/brikcss/starter-module.git"
-	},
-	"bugs": {
-		"url": "https://github.com/brikcss/starter-module/issues"
-	},
-	"keywords": [
-		"brikcss"
-	],
-	"bin": {},
-	"main": "./dist/lib/lib.min.js",
-	"module": "./dist/module/lib.min.js",
-	"browser": "./dist/browser/lib.min.js",
-	"umd": "./dist/umd/lib.min.js",
-	"directories": {
-		"bin": "./bin",
-		"lib": "./dist/lib",
-		"doc": "./docs"
-	},
-	"files": [
-		"dist"
-	],
-	"publishConfig": {
-		"tag": "dev",
-		"access": "public"
-	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "NODE_ENV=production node ./node_modules/.bin/pre-commit-lint",
-			"commit-msg": "commitlint -e $HUSKY_GIT_PARAMS && . ./node_modules/.bin/commit-msg-stamp-branch ${HUSKY_GIT_PARAMS}",
-			"pre-push": ". ./node_modules/.bin/pre-push-check-stage && echo \"\n[ok] Pushing code...\""
-		}
-	},
-	"scripts": {
-		"prestart": "npm run build",
-		"start": "concurrently \"npm run watch\" \"npm run serve\"",
-		"ci": "npm test && npm run test:submit",
-		"pretest": "npm run build",
-		"test": "concurrently \"npm run test:lint\" \"npm run test:coverage\"",
-		"test:lint": "concurrently \"npm run lint:js\" \"npm run lint:css\" && echo \"\n[ok] Linter complete.\n\"",
-		"test:unit": "node ./node_modules/.bin/mocha \"./test/*.spec.js\" --reporter=mocha-better-spec-reporter --colors",
-		"test:coverage": "nyc --reporter=lcov --reporter=text mocha \"./test/*.spec.js\" --recursive",
-		"test:submit": "concurrently \"cat coverage/lcov.info | codacy-coverage\" \"cat coverage/lcov.info | coveralls\"",
-		"test:ui": "npx shots",
-		"prebuild": "rimraf dist",
-		"build": "concurrently \"npm run rollup\" \"stak --config=.stakcssrc.js:all\"",
-		"watch": "concurrently \"npm run build -- --watch\" \"npm run test:unit -- --watch\"",
-		"serve": "browser-sync start --config ./.browsersyncrc.js",
-		"lint:css": "node ./node_modules/.bin/stylelint src/**/*.css --format=stylish",
-		"lint:js": "node ./node_modules/.bin/eslint ./src/**/*.js",
-		"rollup": "rollup --config=.rolluprc.js",
-		"semantic-release": "semantic-release"
-	},
-	"devDependencies": {
-		"@brikcss/eslint-config": "0.1.4",
-		"@brikcss/git-hooks": "1.2.0",
-		"@brikcss/merge": "1.0.7",
-		"@brikcss/shots": "0.0.9",
-		"@brikcss/stakcss": "0.8.0",
-		"@brikcss/stakcss-bundler-copy": "0.1.0",
-		"@brikcss/stakcss-bundler-ejs": "0.0.1",
-		"@brikcss/stakcss-bundler-postcss": "0.4.0",
-		"@brikcss/stylelint-config-css": "0.1.2",
-		"@commitlint/cli": "7.0.0",
-		"autoprefixer": "8.6.0",
-		"babel-core": "6.26.3",
-		"babel-plugin-external-helpers": "6.22.0",
-		"babel-preset-env": "1.7.0",
-		"browser-sync": "2.24.4",
-		"codacy-coverage": "3.0.0",
-		"concurrently": "3.5.1",
-		"coveralls": "3.0.1",
-		"cross-env": "5.1.6",
-		"eslint": "4.19.1",
-		"mocha": "5.2.0",
-		"mocha-better-spec-reporter": "3.1.0",
-		"nyc": "12.0.2",
-		"postcss": "6.0.22",
-		"postcss-csso": "3.0.0",
-		"postcss-reporter": "5.0.0",
-		"prettier": "1.13.4",
-		"rimraf": "2.6.2",
-		"rollup": "0.59.4",
-		"rollup-plugin-babel": "3.0.4",
-		"rollup-plugin-commonjs": "9.1.3",
-		"rollup-plugin-node-resolve": "3.3.0",
-		"rollup-plugin-prettier": "0.4.0",
-		"rollup-plugin-terser": "1.0.1",
-		"semantic-release": "15.5.0",
-		"stylelint": "9.2.1",
-		"stylelint-formatter-pretty": "1.0.3"
-	}
+  "name": "@brikcss/starter-module",
+  "version": "0.2.0",
+  "description": "Starter repo for building node, CLI, JS, or browser modules.",
+  "author": "Brikcss <https://github.com/brikcss>",
+  "contributors": ["The Zimmee <thezimmee@gmail.com>"],
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.4.4",
+    "@babel/polyfill": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "@brikcss/git-hooks": "^2.1.2",
+    "@brikcss/merge": "1.0.7",
+    "browser-sync": "2.26.5",
+    "codacy-coverage": "3.4.0",
+    "concurrently": "4.1.0",
+    "coveralls": "3.0.3",
+    "jest": "^24.8.0",
+    "rimraf": "2.6.3",
+    "rollup": "1.12.3",
+    "rollup-plugin-babel": "4.3.2",
+    "rollup-plugin-commonjs": "10.0.0",
+    "rollup-plugin-node-resolve": "5.0.0",
+    "rollup-plugin-terser": "5.0.0"
+  },
+  "scripts": {
+    "start": "npm run watch",
+    "pretest": "npm run build",
+    "test": "standard && jest --coverage --passWithNoTests",
+    "cov": "cat coverage/lcov.info | coveralls && cat coverage/lcov.info | codacy-coverage",
+    "prebuild": "rimraf esm umd cjs dist",
+    "build": "bundle --config=.bundlesrc.js && rollup --config=.rolluprc.js",
+    "prod": "NODE_ENV=production npm run build && npm run serve",
+    "watch": "bundle --config=.bundlesrc.js --watch & rollup --config=.rolluprc.js --watch",
+    "serve": "browser-sync start --config=.browsersyncrc.js"
+  },
+  "files": ["dist"],
+  "bin": {},
+  "main": "./dist/lib/lib.min.js",
+  "module": "./dist/module/lib.min.js",
+  "browser": "./dist/browser/lib.min.js",
+  "umd": "./dist/umd/lib.min.js",
+  "homepage": "https://github.com/brikcss/starter-module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brikcss/starter-module.git"
+  },
+  "bugs": {
+    "url": "https://github.com/brikcss/starter-module/issues"
+  },
+  "license": "MIT",
+  "keywords": ["brikcss"],
+  "publishConfig": {
+    "tag": "next",
+    "access": "public"
+  }
 }

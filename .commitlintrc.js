@@ -1,8 +1,4 @@
-/** ------------------------------------------------------------------------------------------------
- *  @filename  commitlint.config.js
- *  @author  brikcss  <https://github.com/brikcss>
- *  @description  http://marionebl.github.io/commitlint/#/reference-configuration
- ** --------------------------------------------------------------------------------------------- */
+/*! .commitlintrc.js | @author Brikcss (https://github.com/brikcss) | @reference (https://marionebl.github.io/commitlint/#/reference-configuration) */
 
 module.exports = {
   rules: {
@@ -13,7 +9,7 @@ module.exports = {
     'scope-case': [1, 'always', 'kebab-case'],
     'subject-case': [1, 'always', 'sentence-case'],
     'subject-empty': [2, 'never'],
-    'subject-full-stop': [2, 'always', '.'],
+    'subject-full-stop': [1, 'always', '.'],
     'type-enum': [
       2,
       'always',
@@ -31,10 +27,10 @@ module.exports = {
         'perf',
         'performance',
         'tools',
-        'chore',
-      ],
+        'chore'
+      ]
     ],
     'type-case': [2, 'always', 'lowerCase'],
-    'type-empty': [2, 'never'],
-  },
-};
+    'type-empty': [2, 'never']
+  }
+}

@@ -1,11 +1,5 @@
-/* eslint-env mocha */
-// const assert = require('assert');
-const rm = require('rimraf');
+/* eslint-env jest */
 
 describe('lib()', () => {
-	afterEach(() => {
-		rm.sync('.temp');
-	});
-
-	it('should do something amazing');
-});
+  it('should do something amazing', () => {})
+})

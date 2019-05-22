@@ -1,39 +1,59 @@
-### ------------------------------------------------------------------------------------------------
-##  @filename  .travis.yml
-##  @author  brikcss  <https://github.com/brikcss>
-##  @description  https://docs.travis-ci.com/user/customizing-the-build/
-### ------------------------------------------------------------------------------------------------
+#! .travis.yml | @author Brikcss (https://github.com/brikcss) | @reference (https://docs.travis-ci.com/user/customizing-the-build) #
 
 language: node_js
+node_js: '9'
+
 cache:
   bundler: true
-  directories:
-    - node_modules
+  npm: true
+
 notifications:
   email:
     on_failure: always
-env: BUILD_LEADER_ID=1 NODE_ENV=test
 
-jobs:
-  include:
-    - stage: Test on node 8
-      node_js: '8'
-      before_script: npm prune -d
-      script: npm run ci -d
-      deploy:
-        provider: npm
-        email: thezimmee@gmail.com
-        api_key: $NPM_TOKEN
-        skip_cleanup: true
-      # deploy:
-      #   provider: script
-      #   skip_cleanup: true
-      #   script:
-      #     - npx semantic-release
+env: NODE_ENV=test
+
+before_script: npm prune -d
+script: npm test -d
+
+deploy:
+  # Publish to NPM.
+  - provider: npm
+    email: thezimmee@gmail.com
+    api_key: $NPM_TOKEN
+    skip_cleanup: true
+    on:
+      branch: master
+  # Prep for GitHub release.
+  - provider: script
+    skip_cleanup: true
+    script: bash ci/github-prep.sh
+    on:
+      branch: master
+  # Release to GitHub
+  - provider: releases
+    api_key: $GITHUB_TOKEN
+    draft: true
+    file_glob: true
+    file:
+      - '*.zip'
+      - '*.tgz'
+    skip_cleanup: true
+    on:
+      branch: master
+
+# Semantic release to NPM and GitHub.
+# deploy:
+#   provider: script
+#   skip_cleanup: true
+#   script:
+#     - npx semantic-release
 
 branches:
   only:
     - master
+    - /^greenkeeper/.*$/
+# Semantic release to NPM and GitHub.
 # branches:
 #   except:
 #     - /^v\d+\.\d+\.\d+$/
