@@ -4,7 +4,7 @@
 // Imports and setup.
 //
 
-import configGen from './.rollup-config-gen.js'
+import configGen from '@brikcss/rollup-config-generator'
 
 /**
  * Generate configs with a simple configuration object or array.
