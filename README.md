@@ -58,14 +58,14 @@ We ❤️❤️❤️ contributions of any kind, whether it's bug reports, quest
 ### NPM
 
 ```bash
-npm install -D @brikcss/ds-webalias
+npm install -D @brikcss/starter-module
 ```
 
 ### GitHub
 
 Download the [latest release](https://github.com/brikcss/starter-module/releases/latest).
 
-_Note: If you install from GitHub, remove `node_modules/@brikcss/ds-webalias` from any documented file paths._
+_Note: If you install from GitHub, remove `node_modules/@brikcss/starter-module` from any documented file paths._
 
 ## Quick Start
 

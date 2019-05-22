@@ -21,27 +21,22 @@ export default configGen.create(
   [
     {
       type: 'browser',
-      id: 'webalias',
-      input: 'src/webalias.js',
+      id: 'starter-module',
+      input: 'src/starter-module.js',
       output: {
         banner: configGen.createBanner()
       }
     },
     {
       type: 'dependency',
-      id: 'hyperhtml',
-      input: 'node_modules/hyperhtml/esm'
-    },
-    {
-      type: 'dependency',
-      id: 'element',
-      input: 'node_modules/@brikcss/element/dist/esm/brik-element.js'
+      id: 'my-dependency',
+      input: 'node_modules/my-dependency/esm'
     }
   ],
   {
     umd (output, config) {
       output.exports = 'named'
-      output.name = config.id === 'hyperhtml' ? 'brikcss.html' : 'brikcss.elements'
+      output.name = 'brikcss.elements'
       output.globals = {
         '@brikcss/element': 'brikcss',
         hyperhtml: 'brikcss.html'
