@@ -28,12 +28,13 @@
   "scripts": {
     "start": "npm run watch",
     "pretest": "npm run build",
-    "test": "standard && jest --config=./.jestrc.js --coverage --passWithNoTests",
+    "test": "standard && jest --config=./.jestrc.js --coverage --passWithNoTests && size-limit",
     "posttest": "npm run cov",
     "cov": "cat coverage/lcov.info | coveralls && cat coverage/lcov.info | codacy-coverage",
     "prebuild": "rimraf esm umd cjs dist",
     "build": "bundle --config=.bundlesrc.js && rollup --config=.rolluprc.js",
     "prod": "NODE_ENV=production npm run build && npm run serve",
+    "size": "size-limit",
     "watch": "bundle --config=.bundlesrc.js --watch & rollup --config=.rolluprc.js --watch",
     "serve": "browser-sync start --config=.browsersyncrc.js"
   },

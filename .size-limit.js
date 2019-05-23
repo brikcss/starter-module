@@ -18,6 +18,7 @@
 module.exports = [
   {
     path: 'src/**/*',
-    limit: '10 kb'
+    limit: '10 kb',
+    webpack: false
   }
 ]
