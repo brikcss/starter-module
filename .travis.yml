@@ -27,7 +27,7 @@ deploy:
   # Prep for GitHub release.
   - provider: script
     skip_cleanup: true
-    script: bash ci/github-prep.sh
+    script: bash scripts/github-zip.sh
     on:
       branch: master
   # Release to GitHub
