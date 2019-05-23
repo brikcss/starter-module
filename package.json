@@ -7,7 +7,7 @@
   "dependencies": {},
   "devDependencies": {
     "@babel/preset-env": "^7.4.5",
-    "@brikcss/git-hooks": "^2.1.2",
+    "@brikcss/git-hooks": "^2.2.1",
     "@brikcss/merge": "^1.0.7",
     "@brikcss/rollup-config-generator": "^0.0.2",
     "@bundles/core": "^0.9.2",

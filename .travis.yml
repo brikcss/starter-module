@@ -1,4 +1,4 @@
-#! .travis.yml | @author Brikcss (https://github.com/brikcss) | @reference (https://docs.travis-ci.com/user/customizing-the-build) #
+# .travis.yml | @author Brikcss (https://github.com/brikcss) | @reference (https://docs.travis-ci.com/user/customizing-the-build) #
 
 language: node_js
 node_js: '9'
@@ -27,7 +27,7 @@ deploy:
   # Prep for GitHub release.
   - provider: script
     skip_cleanup: true
-    script: bash scripts/github-zip.sh
+    script: npx github-zip
     on:
       branch: master
   # Release to GitHub
