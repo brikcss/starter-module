@@ -172,6 +172,13 @@ Get up and running in less than five minutes:
     -   Install `semantic-release` when ready (not installed by default due to security issues).
     -   Install shots/puppeteer when ready (not installed by default due to security issues).
 
+3.  Configure Travis build environment:
+
+    -   `NPM_TOKEN` -> NPM token.
+    -   `GITHUB_TOKEN` -> GitHub token.
+    -   `CODACY_PROJECT_TOKEN` -> Codacy project API token.
+    -   `COVERALLS_REPO_TOKEN` -> Coveralls token.
+
 ## Configuration ⚙️
 
 ### `propertyName`
