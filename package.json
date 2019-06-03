@@ -1,6 +1,6 @@
 {
   "name": "@brikcss/starter-module",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Starter repo for building node, CLI, JS, or browser modules.",
   "author": "Brikcss <https://github.com/brikcss>",
   "contributors": ["The Zimmee <thezimmee@gmail.com>"],
@@ -31,11 +31,11 @@
     "test": "standard && jest --config=./.jestrc.js --coverage --passWithNoTests && size-limit",
     "posttest": "npm run cov",
     "cov": "cat coverage/lcov.info | coveralls && cat coverage/lcov.info | codacy-coverage",
-    "prebuild": "rimraf esm umd cjs dist",
+    "size": "size-limit",
+    "prebuild": "rimraf esm umd cjs bin dist",
     "build": "bundle --config=.bundlesrc.js && rollup --config=.rolluprc.js",
     "prod": "NODE_ENV=production npm run build && npm run serve",
-    "size": "size-limit",
-    "watch": "bundle --config=.bundlesrc.js --watch & rollup --config=.rolluprc.js --watch",
+    "watch": "concurrently \"bundle --config=.bundlesrc.js --watch\" \"rollup --config=.rolluprc.js --watch\" \"jest --config=.jestrc.js --watch\"",
     "serve": "browser-sync start --config=.browsersyncrc.js"
   },
   "files": ["dist"],

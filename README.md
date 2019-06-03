@@ -27,51 +27,54 @@
 <p align="center">
     <!-- NPM version. -->
     <a href="https://www.npmjs.com/package/@brikcss/starter-module">
-        <img alt="NPM version" src="https://img.shields.io/npm/v/@brikcss/starter-module.svg?style=flat-square">
+        <img alt="NPM version" src="https://img.shields.io/npm/v/@brikcss/starter-module.svg?style=for-the-badge">
     </a>
     <!-- NPM tag version. -->
     <a href="https://www.npmjs.com/package/@brikcss/starter-module">
-        <img alt="NPM version" src="https://img.shields.io/npm/v/@brikcss/starter-module/next.svg?style=flat-square">
+        <img alt="NPM version" src="https://img.shields.io/npm/v/@brikcss/starter-module/next.svg?style=for-the-badge">
     </a>
     <!-- NPM downloads/month. -->
     <a href="https://www.npmjs.com/package/@brikcss/starter-module">
-        <img alt="NPM downloads per month" src="https://img.shields.io/npm/dm/@brikcss/starter-module.svg?style=flat-square">
+        <img alt="NPM downloads per month" src="https://img.shields.io/npm/dm/@brikcss/starter-module.svg?style=for-the-badge">
     </a>
     <!-- Travis branch. -->
     <a href="https://github.com/brikcss/starter-module/tree/master">
-        <img alt="Travis branch" src="https://img.shields.io/travis/rust-lang/rust/master.svg?style=flat-square&label=master">
+        <img alt="Travis branch" src="https://img.shields.io/travis/rust-lang/rust/master.svg?style=for-the-badge&label=master">
+    </a>
+    <!-- GitHub issues. -->
+    <a href="https://github.com/brikcss/starter-module/issues">
+        <img alt="GitHub issues" src="https://img.shields.io/github/issues/brikcss/starter-module.svg?style=for-the-badge">
     </a>
     <!-- Codacy. -->
     <!-- <a href="https://www.codacy.com">
-        <img alt="Codacy code quality" src="https://img.shields.io/codacy/grade/<enter token here>/master.svg?style=flat-square">
+        <img alt="Codacy code quality" src="https://img.shields.io/codacy/grade/<enter token here>/master.svg?style=for-the-badge">
         </a> -->
     <!-- <a href="https://www.codacy.com">
-        <img alt="Codacy code coverage" src="https://img.shields.io/codacy/coverage/<enter token here>/master.svg?style=flat-square">
+        <img alt="Codacy code coverage" src="https://img.shields.io/codacy/coverage/<enter token here>/master.svg?style=for-the-badge">
         </a> -->
     <!-- Coveralls -->
     <!-- <a href='https://coveralls.io/github/brikcss/starter-module?branch=master'>
-        <img src='https://img.shields.io/coveralls/github/brikcss/starter-module/master.svg?style=flat-square' alt='Coverage Status' />
+        <img src='https://img.shields.io/coveralls/github/brikcss/starter-module/master.svg?style=for-the-badge' alt='Coverage Status' />
     </a> -->
     <!-- MIT License. -->
     <a href="LICENSE.md">
-        <img alt="License" src="https://img.shields.io/npm/l/express.svg?style=flat-square">
+        <img alt="License" src="https://img.shields.io/npm/l/express.svg?style=for-the-badge">
     </a>
-    <br>
     <!-- JS Standard style. -->
     <a href="https://standardjs.com">
-        <img alt="JavaScript Style Guide" src="https://img.shields.io/badge/code_style-standard-brightgreen.svg?style=flat-square">
+        <img alt="JavaScript Style Guide" src="https://img.shields.io/badge/code_style-standard-brightgreen.svg?style=for-the-badge">
     </a>
     <!-- Prettier code style. -->
     <a href="https://prettier.io/">
-        <img alt="code style: prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square">
+        <img alt="code style: prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=for-the-badge">
     </a>
     <!-- Semantic release. -->
     <!-- <a href="https://github.com/semantic-release/semantic-release">
-        <img alt="semantic release" src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat-square">
+        <img alt="semantic release" src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge">
     </a> -->
     <!-- Commitizen friendly. -->
     <a href="http://commitizen.github.io/cz-cli/">
-        <img alt="Commitizen friendly" src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square">
+        <img alt="Commitizen friendly" src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge">
     </a>
     <!-- Greenkeeper. -->
     <a href="https://greenkeeper.io/">
@@ -94,28 +97,28 @@
 [![License][license-img]][license-url]
 
 [npm-url]: https://www.npmjs.com/package/@brikcss/starter-module
-[npm-version-img]: https://img.shields.io/npm/v/@brikcss/starter-module.svg?style=flat-square
-[npm-next-img]: https://img.shields.io/npm/v/@brikcss/starter-module.svg?style=flat-square
-[npm-downloads-img]: https://img.shields.io/npm/dm/@brikcss/starter-module.svg?style=flat-square
+[npm-version-img]: https://img.shields.io/npm/v/@brikcss/starter-module.svg?style=for-the-badge
+[npm-next-img]: https://img.shields.io/npm/v/@brikcss/starter-module.svg?style=for-the-badge
+[npm-downloads-img]: https://img.shields.io/npm/dm/@brikcss/starter-module.svg?style=for-the-badge
 [build-url]: https://github.com/brikcss/starter-module/tree/master
-[build-img]: https://img.shields.io/travis/rust-lang/rust/master.svg?style=flat-square&label=master
+[build-img]: https://img.shields.io/travis/rust-lang/rust/master.svg?style=for-the-badge&label=master
 [codacy-url]: https://www.codacy.com
-[codacy-quality-img]: https://img.shields.io/codacy/grade/<enter-token-here>/master.svg?style=flat-square
-[codacy-coverage-img]: https://img.shields.io/codacy/coverage/<enter-token-here>/master.svg?style=flat-square
+[codacy-quality-img]: https://img.shields.io/codacy/grade/<enter-token-here>/master.svg?style=for-the-badge
+[codacy-coverage-img]: https://img.shields.io/codacy/coverage/<enter-token-here>/master.svg?style=for-the-badge
 [coveralls-url]: https://coveralls.io/github/brikcss/starter-module?branch=master
-[coveralls-img]: https://img.shields.io/coveralls/github/brikcss/starter-module/master.svg?style=flat-square
+[coveralls-img]: https://img.shields.io/coveralls/github/brikcss/starter-module/master.svg?style=for-the-badge
 [standardjs-url]: https://standardjs.com
-[standardjs-img]: https://img.shields.io/badge/code_style-standard-brightgreen.svg?style=flat-square
+[standardjs-img]: https://img.shields.io/badge/code_style-standard-brightgreen.svg?style=for-the-badge
 [prettier-url]: https://prettier.io
-[prettier-img]: https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square
+[prettier-img]: https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=for-the-badge
 [semantic-url]: https://github.com/semantic-release/semantic-release
-[semantic-img]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat-square
+[semantic-img]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge
 [commitizen-url]: http://commitizen.github.io/cz-cli
-[commitizen-img]: https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square
+[commitizen-img]: https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge
 [greenkeeper-url]: https://greenkeeper.io
-[greenkeeper-img]: https://badges.greenkeeper.io/brikcss/starter-module.svg?style=flat-square
+[greenkeeper-img]: https://badges.greenkeeper.io/brikcss/starter-module.svg?style=for-the-badge
 [license-url]: ./LICENSE.md
-[license-img]: https://img.shields.io/npm/l/express.svg?style=flat-square -->
+[license-img]: https://img.shields.io/npm/l/express.svg?style=for-the-badge -->
 
 <p align="center">
     <strong>⚠️ IMPORTANT: Brikcss follows semantic versioning. This package is currently at major version zero, which means <a href="https://semver.org/#spec-item-4" target="_blank">"anything may change at any time", and it "should not be considered stable"</a>.</strong>

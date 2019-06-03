@@ -12,11 +12,11 @@ node_modules
 
 # Build files
 /dist
-/lib
-/browser
-/module
+/build
+/bin
 /umd
 /esm
+/cjs
 /.temp
 /.shots/current
 /package
